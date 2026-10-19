@@ -18,11 +18,12 @@ After cloning the project to your local machine, open it in your code editor.
 
 ## Submitting solutions
 
-Once you have solved some or all of the tasks and committed your answers, submit the solutions for evaluation using the `git push` command. Git push will automatically trigger a GitHub Actions workflow that compiles and tests your solutions, providing a pass or fail result for each test.
+Solutions to this exercise are not graded by any GitHub Actions workflow (YAML), and `git push` does not start any grading. Grading is done by the course system: submit your solution on the exercise page in the course system, where your code is compiled and the exercise's JUnit tests are run.
 
-Once the GitHub Actions has executed your code, you see the results in your GitHub repository's [Actions tab](../../actions). It usually takes a few minutes for the assesment to be completed. 
+Finally, push everything to your public GitHub repository and press the **Lähetä tarkistettavaksi** (submit for checking) button on the exercise page. The course system's bot then fetches your code from your repository and checks it with the same tests.
 
-💡 *You can submit your solution for evaluation as many times as needed until the task deadline. However, ensure that your latest submission yields the best scores, as only the most recent scores will be retained.*
+💡 *You can submit your solution as many times as needed until the chapter deadline. Your best result is kept.*
+
 
 ## Exercise 1: PriceFormatter
 
