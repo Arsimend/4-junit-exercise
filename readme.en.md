@@ -8,10 +8,10 @@ You can run your tests using either the testing tool in your code editor ([VS Co
 
 ## Starting the exercise
 
-Start by cloning the Git repository to your local machine. The exercise must be done in your own copy, so make sure the repository URL includes your GitHub username! Create your own copy by forking or copying this repository to your own GitHub account.
+First fork this repository into your own GitHub repository with GitHub's **Fork** button. The exercise is done in your own fork, so only then clone your fork to your computer (the address contains your own GitHub username):
 
 ```sh
-git clone https://github.com/make-sure-that-the-repository-address-contains-your-account.git
+git clone https://github.com/<your-github-username>/<repository-name>.git
 ```
 
 After cloning the project to your local machine, open it in your code editor.
