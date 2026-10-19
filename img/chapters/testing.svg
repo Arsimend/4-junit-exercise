@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 170" role="img" aria-labelledby="t">
+  <title id="t">Yksikkötestaus: suurennuslasi löytää bugin koodista, ja testien tulokset näkyvät hyväksyttyinä ja hylättyinä</title>
+  <rect x="1" y="1" width="318" height="168" rx="14" fill="#fbf7f0" stroke="#dcd8ce"/>
+  <!-- koodirivit -->
+  <g stroke-linecap="round" stroke-width="6">
+    <line x1="22" y1="34" x2="92" y2="34" stroke="#b74a26"/>
+    <line x1="36" y1="54" x2="120" y2="54" stroke="#9a9ea1"/>
+    <line x1="36" y1="74" x2="104" y2="74" stroke="#9a9ea1"/>
+    <line x1="50" y1="94" x2="132" y2="94" stroke="#2d6a4f"/>
+    <line x1="36" y1="114" x2="96" y2="114" stroke="#9a9ea1"/>
+    <line x1="22" y1="134" x2="40" y2="134" stroke="#b74a26"/>
+  </g>
+  <!-- suurennuslasi ja bugi -->
+  <g transform="translate(100 84)">
+    <circle r="34" fill="#fffdf9" fill-opacity=".85" stroke="#1c2327" stroke-width="5"/>
+    <line x1="25" y1="25" x2="48" y2="48" stroke="#1c2327" stroke-width="9" stroke-linecap="round"/>
+    <g transform="translate(-2 2)">
+      <ellipse rx="10" ry="13" fill="#a4262c"/>
+      <circle cy="-14" r="6" fill="#1c2327"/>
+      <line x1="0" y1="-12" x2="0" y2="12" stroke="#fbf7f0" stroke-width="1.5"/>
+      <g stroke="#1c2327" stroke-width="2" stroke-linecap="round" fill="none">
+        <path d="M-9 -6 L-17 -10 M-10 2 L-19 2 M-9 9 L-16 15 M9 -6 L17 -10 M10 2 L19 2 M9 9 L16 15"/>
+        <path d="M-3 -19 L-7 -25 M3 -19 L7 -25"/>
+      </g>
+    </g>
+  </g>
+  <!-- testitulokset -->
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    <text x="182" y="30" fill="#5f6b70">@Test</text>
+    <g transform="translate(182 44)">
+      <rect width="124" height="24" rx="5" fill="#e0efe5"/>
+      <path d="M8 12 l4 4 l8 -8" fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="28" y="16" fill="#2d6a4f">roundsCents</text>
+    </g>
+    <g transform="translate(182 76)">
+      <rect width="124" height="24" rx="5" fill="#e0efe5"/>
+      <path d="M8 12 l4 4 l8 -8" fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="28" y="16" fill="#2d6a4f">leapYear</text>
+    </g>
+    <g transform="translate(182 108)">
+      <rect width="124" height="24" rx="5" fill="#f8e1df"/>
+      <path d="M9 7 l9 10 m0 -10 l-9 10" stroke="#a4262c" stroke-width="2.5" stroke-linecap="round"/>
+      <text x="28" y="16" fill="#a4262c">bugFound</text>
+    </g>
+    <text x="182" y="154" fill="#5f6b70">assertEquals(…)</text>
+  </g>
+</svg>

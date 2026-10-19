@@ -1,185 +1,121 @@
-# Unit testing with the JUnit tool
+# Unit testing with JUnit
 
-This repository contains Java exercises to practice unit testing with the help of the JUnit tool.
+![Unit testing: a magnifying glass finds a bug in the code, and the test results are shown as passed and failed](img/chapters/testing.svg)
 
-Unlike previous exercises, this task does not have pre-written tests; you will write the tests yourself. However, the Java classes to be tested are already in the project template.
-
-You can run your tests using either the testing tool in your code editor ([VS Code](https://code.visualstudio.com/docs/java/java-testing), [Eclipse](https://www.vogella.com/tutorials/JUnitEclipse/article.html)) or the [Gradle automation tool](https://docs.gradle.org/current/userguide/java_testing.html).
+This repository contains Java exercises for practicing unit testing with [JUnit](https://junit.org). Unlike in the earlier exercises, there are no ready-made tests: you write the tests yourself. The Java classes to be tested are ready in the template.
 
 ## Starting the exercise
 
-First fork this repository into your own GitHub repository with GitHub's **Fork** button. The exercise is done in your own fork, so only then clone your fork to your computer (the address contains your own GitHub username):
+First fork this repository into your own GitHub repository with GitHub's **Fork** button, and only then clone your fork to your computer:
 
 ```sh
-git clone https://github.com/<your-github-username>/<repository-name>.git
+git clone https://github.com/<your-github-username>/4-junit-exercise.git
 ```
 
-After cloning the project to your local machine, open it in your code editor.
+Open the cloned project in your code editor.
 
-## Submitting solutions
+## Testing
 
-Solutions to this exercise are not graded by any GitHub Actions workflow (YAML), and `git push` does not start any grading. Grading is done by the course system: submit your solution on the exercise page in the course system, where your code is compiled and the exercise's JUnit tests are run.
-
-Finally, push everything to your public GitHub repository and press the **Lähetä tarkistettavaksi** (submit for checking) button on the exercise page. The course system's bot then fetches your code from your repository and checks it with the same tests.
-
-💡 *You can submit your solution as many times as needed until the chapter deadline. Your best result is kept.*
-
-
-## Exercise 1: PriceFormatter
-
-In this exercise, you need to write unit tests for the provided `PriceFormatter` class and its `formatPrice` method. The method takes a floating-point number as a parameter and returns it formatted as a string according to specific rules. You can call the method as follows:
-
-```java
-PriceFormatter formatter = new PriceFormatter();
-String price = formatter.formatPrice(3.141592653589793); // Returns "3,14 €"
-```
-
-In the basic case, the method should format the given floating-point number as `"123 456,79 €"`. The formatting rules are as follows:
-
-1. A space is used as the thousands separator.
-2. A comma is used as the decimal separator.
-3. The decimal part is two digits long, with the following clarifications:
-    1. The decimal part is rounded to the nearest hundredth (i.e., cent). Additional tip.
-    2. If the decimal part is zero after rounding, it is omitted entirely.
-4. The Euro symbol `€` is placed at the end of the price.
-
-**Note that you do not need to implement the method or its conditions yourself.** Instead of implementing the method, we will practice *testing* the provided method.
-
-### PriceFormatterTest *(basics)*
-
-Implement your own unit tests in the [PriceFormatterTest](./src/test/java/price/formatter/PriceFormatterTest.java) class of the task template to ensure that the provided `formatPrice` method works as described above with different inputs. We recommend writing a separate test method for each rule.
-
-In your test methods, call the `formatPrice` method with various parameters and ensure that the values returned by the method comply with the specified rules:
-
-```java
-PriceFormatter formatter = new PriceFormatter();
-String result = formatter.formatPrice(Math.PI); // Should be 3,14 €
-```
-
-You can run your tests using either the testing tool in your code editor [VS Code](https://code.visualstudio.com/docs/java/java-testing), [Eclipse](https://www.vogella.com/tutorials/JUnitEclipse/article.html)) or the [Gradle automation tool]((https://docs.gradle.org/current/userguide/java_testing.html):
+You can run your tests with your code editor's testing tool ([VS Code](https://code.visualstudio.com/docs/java/java-testing), [Eclipse](https://www.vogella.com/tutorials/JUnitEclipse/article.html)) or with [Gradle](https://docs.gradle.org/current/userguide/java_testing.html), for example:
 
 ```
 ./gradlew test --tests PriceFormatterTest       # unix
 .\gradlew.bat test --tests PriceFormatterTest   # windows
 ```
 
-✅ Note that your own tests should pass at this stage because the method being tested should not have logical errors.
+Add `--info` to the end of the command for more details about failing tests. Do not change the names, parameters or return types of the methods under test. You get the original version of a file back with `git restore <path to file>` or with the **Palauta lähtökoodi** (restore starter code) function of the course system.
 
-💡 *To test the method, you do not need to delve into its source code. What is more important is that you are aware of the **requirements** for the method's functionality as described above.*
+## Submitting and points
 
-💡 *If you use numbers in your tests that fall exactly halfway between hundredths, you might encounter issues related to the limited precision of floating-point numbers. This problem is not due to Java or your own or the tested code, but rather how computers handle decimal fractions. A more detailed explanation can be found in the file [rounding.md](./rounding.md) in this repository or in the article ["What Every Computer Scientist Should Know About Floating-Point Arithmetic" (oracle.com)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html).*
+Each part of the exercise has its own page in the course system (https://jtjuslin.kapsi.fi/java), and its code fields contain the part's starter code. Copy your solution into the code fields or write it there directly. **Testaa ilman palautusta** (test without submitting) runs the part's tests without saving points, and **Lähetä** (submit) submits your solution. Each test class is accepted only if all of its tests pass, and the points are divided according to the accepted test classes.
 
-⛔ *You must not make any changes to the `PriceFormatter` class.*
+**Points in two stages**
 
-### Exercise's points *(5 * 10 %)*
+1. When your solution passes in the course system, you get **half of the points** for the part.
+2. Finally, push everything to your public GitHub repository. Then press the **Lähetä tarkistettavaksi** (submit for checking) button on the part's page. When the tests pass, you get **full points** for the part. The repository may remain public.
 
-The fact that tests "pass" does not necessarily mean that the tests are comprehensive or that the code being tested is bug-free. To ensure that your tests are comprehensive, your tests will also be run against **five different buggy versions** 😈. Your tests must find the bugs hidden in these versions.
+There is no grading YAML workflow (GitHub Actions) on GitHub, and `git push` does not start any grading. When you press **Lähetä tarkistettavaksi**, the course system's bot fetches your code from your repository and checks it with the same tests. Both stages must be completed before the chapter deadline. You can submit as many times as you need, and your best result is kept.
 
-If you wrote comprehensive test cases for all the formatting rules mentioned earlier, this part does not require changes to your tests 😎. If your tests do not find all the bugs in the automatic check, continue developing the [`PriceFormatterTest`](./src/test/java/price/formatter/PriceFormatterTest.java) class and ensure that your tests check all the formatting rules mentioned above with different inputs.
 
-💡 *In this part, your tests will be run five times against five different buggy versions of the `formatPrice` method. You will score points for each run if the buggy version of the `formatPrice` method **causes an error** in at least one of your test methods. If the tests pass, it means the bug was not found, and you will not score points.*
+## Exercise 1: PriceFormatterTest *(5 * 10 %)*
 
-💡 *Running these applied tests requires that the original working version of the `formatPrice` method first passes your own tests.*
+Write unit tests for the `formatPrice` method of the ready-made [PriceFormatter](./src/main/java/price/formatter/PriceFormatter.java) class. The method takes a floating-point number and returns it formatted as a string:
 
-🚀 *The task assessment applies a method called mutation testing: "Mutation testing is used to design new software tests and evaluate the quality of existing software tests. Mutation testing involves modifying a program in small ways." [(Wikipedia)](https://en.wikipedia.org/wiki/Mutation_testing)*
+```java
+PriceFormatter formatter = new PriceFormatter();
+String price = formatter.formatPrice(3.141592653589793); // returns "3,14 €"
+```
 
-## Exercise 2: DayOfYear *(applying, 2 * 25 %)*
+In the basic case, the method formats a number as `"123 456,79 €"` according to the following rules:
 
-In the second exercise of this repository, you need to implement JUnit unit tests for the [provided `DayOfYear` class](./src/main/java/refactoring/DayOfYear.java). The class has one static method named `dayOfYear`. This method takes a date as three integers and should return the ordinal number of the given date in that year (1-366). The first day of the year is numbered 1, and the last day is either 365 or 366, depending on the year.
+* The thousands separator is a space.
+* The decimal separator is a comma.
+* The decimal part has two digits and is rounded to the nearest hundredth, i.e. cent ([extra tip](./rounding.md)).
+* If the decimal part is zero after rounding, it is left out completely.
+* The price ends with the euro sign `€`.
 
-Reading and understanding the method's content is not necessary for the tests. Design the test cases based on how the method **should** work, not how it actually works.
+**You do not need to implement the method yourself**: you practice *testing* a ready-made method. ⛔ *Do not change the `PriceFormatter` class.*
+
+Write your tests in the [PriceFormatterTest](./src/test/java/price/formatter/PriceFormatterTest.java) class of the template and remove its ready-made `fail` test. Write a separate test method for each rule that calls `formatPrice` with different parameters and checks the returned values. You do not need to study the method's source code: the most important thing is to know the **requirements** above. Your tests should pass, because the given method *should* not have any bugs.
+
+💡 *If your tests use numbers that are exactly halfway between hundredths, you may run into the limited precision of floating-point numbers. The problem is not caused by Java or the code but by how computers handle decimals. A more detailed explanation is in [rounding.md](./rounding.md) and in the article ["What Every Computer Scientist Should Know About Floating-Point Arithmetic" (oracle.com)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html).*
+
+### Grading: mutation testing
+
+Passing tests do not yet guarantee that the tests are thorough. That is why the course system first runs your tests against the working `PriceFormatter` class, where all of them must pass. Then your tests are run **against five differently buggy versions** 😈. You get a point for each buggy version if at least one of your tests fails against it, i.e. your tests find the bug. If your tests do not find all bugs, make sure they check all of the rules above with different inputs.
+
+🚀 *This method is called mutation testing: "Mutation testing is used to design new software tests and evaluate the quality of existing software tests. Mutation testing involves modifying a program in small ways." [(Wikipedia)](https://en.wikipedia.org/wiki/Mutation_testing)*
+
+
+## Exercise 2: DayOfYear *(applying, 25 % + 25 %)*
+
+The static method `dayOfYear` of the ready-made [DayOfYear](./src/main/java/refactoring/DayOfYear.java) class takes a date as three integers and returns the day's ordinal number in that year (1–366). The first day of the year is 1 and the last one 365 or 366, depending on the year. **The method has bugs** that you need to find with your own JUnit tests and fix.
 
 > *"Some data sets specify dates using the year and day of year rather than the year, month, and day of month. The day of year (DOY) is the sequential day number starting with day 1 on January 1st."*
 >
 > [Day of the Year (DOY) calendar. National Snow and Ice Data Center](https://nsidc.org/data/user-resources/help-center/day-year-doy-calendar)
 
-You can explore the "day of year" numbers corresponding to different dates using the [Day of the Year (DOY) calendar](https://nsidc.org/data/user-resources/help-center/day-year-doy-calendar) (National Snow and Ice Data Center). Note that from March onwards, the numbers for different days vary between common and leap years.
+You can look up the day numbers of different dates in the [DOY calendar](https://nsidc.org/data/user-resources/help-center/day-year-doy-calendar). Note that from March onwards, the numbers differ between leap years and regular years.
 
-**The provided method contains bugs**, which you need to find using your own JUnit tests in this task.
+### Part 2.1: tests for the `dayOfYear` method
 
-### Part 2.1: write JUnit unit tests for the `dayOfYear` method
+Write the test class `DayOfYearTest` in the package `refactoring` in the [src/test/java](./src/test/java/) directory (start the file with `package refactoring;`). In the course system, a template of the class is ready on the exercise page. Design the test cases based on how the method **should** work, not on how it works now. Test different times of the year and leap years, and write each test case in its own `@Test` method.
 
-Add a new test class `DayOfYearTest` to the project, where you will use the JUnit testing library to test the functionality of the `dayOfYear` method with various test cases. Test classes should be added to the [src/test/java/](./src/test/java/) directory so that JUnit can find them and utilize the JUnit library. Test classes are typically located in the same package as the classes being tested, so in this case, create a package named `refactoring` in the `src/test/java` directory for this new test. Also, add the line `package refactoring;` at the beginning of your test class.
-
-Write sufficient test cases in your test class to verify the method's functionality and any potential errors at different times of the year, considering the leap year logic. Write each test case in its own `@Test` method.
-
-You can run your test class as usual, either with your code editor or with Gradle. In the automatic assessment, your tests will be run with the command:
-
-```
-./gradlew test --tests DayOfYearTest       # unix
-.\gradlew.bat test --tests DayOfYearTest   # windows
-```
-
-💡 *At this stage, your tests will hopefully find the pre-existing bugs in the method, so not all tests will pass yet.*
-
-💡 *Remember to add the new `src/test/refactoring` directory and `DayOfYearTest.java` file to version control with the `git add` command. If needed, check `git status` for instructions on how to do this.*
+💡 *At this point, your tests hopefully find the bugs in the method, so not all tests pass yet. Remember to add the new test file to version control with `git add`.*
 
 ### Part 2.2: fixing and refactoring the `dayOfYear` method
 
-So far in your programming studies, you may have focused mainly on getting your programs to work according to the assignment without paying much attention to their readability or maintainability. We can assume that the given `dayOfYear` method was created in this way. In professional software development, it is rare for the same code to be worked on only once or by only one developer. On the contrary, code is written in teams where developers change, and existing features are constantly modified and fixed.
+In professional software development, code is written in teams where developers change and existing code is modified all the time. That is why code must be understandable and modifiable without unexpected breakage. The `dayOfYear` method consists of a long `if-else` structure and repeated additions, and the same, possibly wrong, numbers repeat in the code.
 
-You will therefore be further developing code written by someone else years ago, just as someone else will be further developing your code. It is very important that the code can be modified without unexpected breakages and that other developers understand each other's code and can use and modify it.
+Fix the bugs and refactor the method to be more understandable and maintainable so that it works the same way from the outside. 📣 **Do not change the method signature or the order of the parameters.** Java's [Year](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Year.html) class with its `isLeap` method and the [Month](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Month.html) and [YearMonth](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/YearMonth.html) classes, which know the lengths of the months, may help.
 
-When you read the code contained in the `dayOfYear` method more closely, you will notice that it uses basic programming structures quite narrowly. The code consists of a very long `if-else` structure and similar integer additions. The same numbers also appear repeatedly in the code and may be incorrect.
-
-When fixing bugs, you might find the Java [`Year` class and its `isLeap` method](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Year.html#isLeap(long)) useful. You can also check the correct lengths of different months, for example, on [Wikipedia](https://fi.wikipedia.org/wiki/Kuukausi). However, hardcoding the lengths of months is not necessarily advisable, as Java already provides both the [Month](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Month.html) and [YearMonth](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/YearMonth.html) classes, which [contain logic for calculating the lengths of months](https://github.com/AdoptOpenJDK/openjdk-jdk9u/blob/9347c48cc4ce5d966c7f0c0a751c313eb0cba99a/jdk/src/java.base/share/classes/java/time/Month.java#L425-L437).
-
-📣 The code you fix should be more understandable and maintainable than the original code, but it should function externally in the same way. **Therefore, you must not change the method's signature or the order of its parameters.**
-
-> *"In computer programming and software design, code refactoring is the process of restructuring existing source code—changing the factoring—without changing its external behavior. Refactoring is intended to improve the design, structure, and/or implementation of the software (its non-functional attributes), while preserving its functionality."*
+> *"Code refactoring is the process of restructuring existing source code—changing the factoring—without changing its external behavior."*
 >
-> Wikipedia. [Code refactoring](https://en.wikipedia.org/wiki/Code_refactoring). Cited on 20.11.2024. [CC BY–SA 3.0](https://fi.wikipedia.org/wiki/Wikipedia:Creative_Commons_Attribution-Share_Alike_3.0_Unported_-lisenssiehdot)
+> Wikipedia. [Code refactoring](https://en.wikipedia.org/wiki/Code_refactoring).
 
-⛔ *The Java standard library contains several ready-made implementations for calculating the ordinal number of a day. In a real software project, you should naturally use an existing solution rather than trying to reinvent the wheel. However, the goal of this exercise is to learn how to test and refactor code, so we recommend creating your own solution by modifying the given code.*
+⛔ *Java's standard library has ready-made implementations for calculating the day of the year, and a real project would use them. The goal of this exercise is to practice testing and refactoring, though, so modify the given code.*
 
-**"Code smells"**
+**"Code smells"**: study the following code smells and improve the code with them. The list is covered with the same example code in the [original source](https://web.mit.edu/6.005/www/fa16/classes/04-code-review/) of the exercise.
 
-Familiarize yourself with the following "code smells" in the example code and improve the code as best as you can:
+* [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+* [Comments Where Needed](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/)
+* [Fail Fast](https://en.wikipedia.org/wiki/Fail-fast)
+* [Avoid Magic Numbers](https://en.wikipedia.org/wiki/Magic_number_(programming))
+* [One Purpose For Each Variable](https://en.wikipedia.org/wiki/Single-responsibility_principle)
 
-- [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
-- [Comments Where Needed](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/)
-- [Fail Fast](https://en.wikipedia.org/wiki/Fail-fast)
-- [Avoid Magic Numbers](https://en.wikipedia.org/wiki/Magic_number_(programming))
-- [One Purpose For Each Variable](https://en.wikipedia.org/wiki/Single-responsibility_principle)
+🤔 *Invalid parameters, a bug or a feature? According to the fail fast principle, problems are easier to fix the earlier they are detected. The method now returns a number even if the month or day is out of range. You may throw an `IllegalArgumentException`, for example, but it is not required, and invalid inputs are not counted as bugs of this method.*
 
-The above list of code smells has been reviewed using this same example code at <https://web.mit.edu/6.005/www/fa16/classes/04-code-review/>. You can also use other sources.
+### Grading
 
-**Links**
+The course system first runs your own `DayOfYearTest` class, whose tests must all pass against your fixed code (25 %). Then it runs a separate grading test `DayOfYearGradingTest` that checks that the fixed method works correctly (25 %).
 
-* [Year class](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/time/Year.html)
-* [Month class](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/time/Month.html)
-* [YearMonth class](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/time/YearMonth.html)
-* [The original source for the exercise](https://web.mit.edu/6.005/www/fa16/classes/04-code-review/)
-
-### Invalid parameters &mdash; a bug or a feature? *(something to consider)*
-
-In the [original source](https://web.mit.edu/6.005/www/fa16/classes/04-code-review/#fail_fast) of the `dayOfYear` example code, the fail fast approach is highlighted, which suggests that problems are easier to fix the earlier they are detected. In the case of this method, it returns integers regardless of whether the month and day numbers are given in the correct order or within valid ranges.
-
-If you wish, you can add checks to the method and throw an `IllegalArgumentException` if the numbers provided to the method do not correspond to a real date. However, this is not necessary for the task, and we do not consider invalid inputs as bugs for this method.
-
-### Exercise's points *(25 % + 25 %)*
-
-The `DayOfYear` exercise is automatically evaluated in two parts. In the first part, we run your own `DayOfYearTest` test class, which must pass all the tests you have written.
-
-```
-./gradlew test --tests DayOfYearTest       # unix
-.\gradlew.bat test --tests DayOfYearTest   # windows
-```
-
-In the second part, we run a separate test class to ensure that the `dayOfYear` method works correctly after your corrections. If the separate test class detects errors in the automatic evaluation, carefully read the report on the test execution found in the [Actions tab](../../actions).
 
 ## License and authors
 
-### DayOfYear Example Class (Smelly Example #1)
+This exercise was developed by Teemu Havulinna and Jukka Juslin, and it is licensed under the [Creative Commons BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/). ChatGPT 3.5 and GitHub Copilot were used in creating the assignment, the source code and the tests.
 
-The [`DayOfYear` example class](./src/main/java/refactoring/DayOfYear.java) used in the task is borrowed from the [MIT Software Construction course materials](https://web.mit.edu/6.005/www/fa16/classes/04-code-review/). Its authors and license are:
+**DayOfYear example class (Smelly Example #1).** The [DayOfYear](./src/main/java/refactoring/DayOfYear.java) class is borrowed from the [course materials of MIT's Software Construction course](https://web.mit.edu/6.005/www/fa16/classes/04-code-review/):
 
 > *Collaboratively authored with contributions from: Saman Amarasinghe, Adam Chlipala, Srini Devadas, Michael Ernst, Max Goldman, John Guttag, Daniel Jackson, Rob Miller, Martin Rinard, and Armando Solar-Lezama.*
 >
-> *Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.fi).*
-
-### This execise
-
-This exercise is made by Teemu Havulinna and translated to English by Kalle Ilves and it is licensed under a [Creative Commons BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-ChatGPT 3.5 language model and GitHub copilot AI assistant has been used to implement the exercise.
+> *Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*
