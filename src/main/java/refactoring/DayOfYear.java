@@ -1,3 +1,4 @@
+
 package refactoring;
 
 /**
@@ -29,42 +30,31 @@ public class DayOfYear {
      * @return the day of the year (1-366)
      */
     public static int dayOfYear(int month, int dayOfMonth, int year) {
-        /*
-         * You are expected to change this method in the exercise in order to fix the
-         * bugs in it. You are also expected to improve the method's structure and
-         * style to make it more readable and maintainable.
-         *
-         * You are allowed to throw runtime exceptions, such as
-         * IllegalArgumentException, if the inputs are invalid.
-         *
-         * However, you are *not* allowed to change the method signature (name,
-         * parameters, return type).
-         */
+        return dayOfYearFixed(month, dayOfMonth, year);
+    }
 
-        if (month == 2) {
-            dayOfMonth += 31;
-        } else if (month == 3) {
-            dayOfMonth += 59;
-        } else if (month == 4) {
-            dayOfMonth += 90;
-        } else if (month == 5) {
-            dayOfMonth += 31 + 28 + 31 + 30;
-        } else if (month == 6) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31;
-        } else if (month == 7) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31 + 30;
-        } else if (month == 8) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31 + 30 + 31;
-        } else if (month == 9) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31;
-        } else if (month == 10) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-        } else if (month == 11) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-        } else if (month == 12) {
-            dayOfMonth += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 31;
+    public static int dayOfYearFixed(int month, int dayOfMonth, int year) {
+
+        int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+            days[1] = 29;
         }
 
-        return dayOfMonth;
+        if (month < 1 || month > 12) {
+            throw new IllegalArgumentException("Wrong month");
+        }
+
+        if (dayOfMonth < 1 || dayOfMonth > days[month - 1]) {
+            throw new IllegalArgumentException("Wrong day");
+        }
+
+        int total = dayOfMonth;
+
+        for (int i = 0; i < month - 1; i++) {
+            total = total + days[i];
+        }
+
+        return total;
     }
 }
